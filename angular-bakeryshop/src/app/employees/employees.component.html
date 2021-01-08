@@ -1,0 +1,57 @@
+<div class="container">
+  <h2 class="mb-4">Employees</h2>
+  <table class="table table-hover table-bordered table-sortable">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Avatar</th> <!-- TODO: Add a column for an avatar -->
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees">
+      <td class="firstcol">{{employee.id}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.image}}</td>
+      <td><button type="button" class="btn btn-danger"  (click)="deleteEmployee($index)">Delete</button></td>
+    </tr>
+
+
+
+
+    <tr class="input-row" [formGroup]="form">
+      <td><input formControlName="id" type="text" placeholder="ID" class="form-control">
+        <div *ngIf="form.controls['id'].invalid && (form.controls['id'].dirty || form.controls['id'].touched)" 
+          class="alert alert-danger">
+        <div *ngIf="form.controls['id'].errors.required"> ID is required. </div>
+        <div *ngIf="form.controls['id'].errors.pattern"> Numbers Only!. </div>
+        </div>
+      </td>
+      <td><input formControlName="name" type="text" placeholder="Name" class="form-control">
+        <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)" 
+          class="alert alert-danger">
+        <div *ngIf="form.controls['name'].errors.required"> Name is required. </div>
+        <div *ngIf="form.controls['name'].errors.pattern"> Letters Only!. </div>
+        </div>
+      </td>
+      <td><input formControlName="email" type="text" placeholder="Email" class="form-control">
+        <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)" 
+          class="alert alert-danger">
+        <div *ngIf="form.controls['email'].errors.required"> Email is required. </div>
+        <div *ngIf="form.controls['email'].errors.email"> Email pattern incorrect. </div>
+        </div>
+      </td>
+      <td><input formControlName="image" type="file" placeholder="Image" class="form-control">
+        <div *ngIf="form.controls['image'].invalid && (form.controls['image'].dirty || form.controls['image'].touched)" 
+        class="alert alert-danger">
+      <div *ngIf="form.controls['image'].errors.required"> Image is required. </div>
+      </div>
+    </td>
+      <td><button type="submit" class="btn btn-success" style="width: 70px" (click)="addEmployee()">Add</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
