@@ -14,8 +14,7 @@ export class EmployeesComponent implements OnInit {
   employees: Employee[] = [];
 
   constructor(private employeeService: EmployeeService,
-              private fb: FormBuilder) {
-  }
+              private fb: FormBuilder) {}
 
   ngOnInit() {
     this.initForm();

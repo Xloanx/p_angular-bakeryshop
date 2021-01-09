@@ -6,6 +6,7 @@ export class Employee {
     this.first_name = first_name;
     this.email = email;
     this.avatar = avatar;
+    
   }
 
   id: number;
