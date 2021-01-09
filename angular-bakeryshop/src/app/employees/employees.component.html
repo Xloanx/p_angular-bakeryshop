@@ -13,9 +13,9 @@
     <tbody>
     <tr *ngFor="let employee of employees">
       <td class="firstcol">{{employee.id}}</td>
-      <td>{{employee.name}}</td>
+      <td>{{employee.first_name}} {{employee.last_name}}</td>
       <td>{{employee.email}}</td>
-      <td>{{employee.image}}</td>
+      <td><img src={{employee.avatar}} ></td>
       <td><button type="button" class="btn btn-danger"  (click)="deleteEmployee($index)">Delete</button></td>
     </tr>
 
@@ -44,10 +44,10 @@
         <div *ngIf="form.controls['email'].errors.email"> Email pattern incorrect. </div>
         </div>
       </td>
-      <td><input formControlName="image" type="file" placeholder="Image" class="form-control">
-        <div *ngIf="form.controls['image'].invalid && (form.controls['image'].dirty || form.controls['image'].touched)" 
+      <td><input formControlName="avatar" type="file" placeholder="avatar" class="form-control">
+        <div *ngIf="form.controls['avatar'].invalid && (form.controls['avatar'].dirty || form.controls['avatar'].touched)" 
         class="alert alert-danger">
-      <div *ngIf="form.controls['image'].errors.required"> Image is required. </div>
+      <div *ngIf="form.controls['avatar'].errors.required"> Avatar is required. </div>
       </div>
     </td>
       <td><button type="submit" class="btn btn-success" style="width: 70px" (click)="addEmployee()">Add</button></td>
